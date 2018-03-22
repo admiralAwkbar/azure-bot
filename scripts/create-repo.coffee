@@ -7,8 +7,8 @@ module.exports = (robot) ->
   robot.respond /create_repo (.*)/i, (msg) ->
     args = []
     reponame = msg.match[1].replace /^\s+|\s+$/g, ""
-
-    if (reponame.indexOf(" ") != -1) {
+    spaceIndex = reponame.indexOf " "
+    if (spaceIndex != -1) {
       msg.send "Repository names cannot have spaces"
     } else {
       apikey = process.env("GITHUB_API_TOKEN")
