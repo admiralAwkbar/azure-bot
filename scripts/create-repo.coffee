@@ -15,11 +15,12 @@ module.exports = (robot) ->
 
       console.log "apikey = #{apikey}"
 
-      args.push(reponame + " " + apikey)
+      args.push(reponame)
+      args.push(apikey)
       # Instantiate child process to be able to create a subprocess
       {spawn} = require 'child_process'
       # Create new subprocess and have it run the script
-      cmd = spawn("/home/site/wwwroot/scripts/shell/create-and-protect-repo.sh #{reponame} #{apikey}")
+      cmd = spawn('/home/site/wwwroot/scripts/shell/create-and-protect-repo.sh', args)
       # Catch stdout and output into hubot's log
       cmd.stdout.on 'data', (data) ->
         msg.send "```\n#{data.toString()}\n```"
