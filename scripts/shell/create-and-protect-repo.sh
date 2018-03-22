@@ -38,7 +38,7 @@ test -z $API_TOKEN && echo "API_TOKEN Required!" 1>&2 && exit 1
 echo "------------------------------------------"
 echo "Creating Repository:[$ORG_NAME/$REPO_NAME]..."
 echo "------------------------------------------"
-curl -H "Authorization: token $API_TOKEN" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/orgs/$ORG_NAME/repos" \
+curl -s -H "Authorization: token $API_TOKEN" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/orgs/$ORG_NAME/repos" \
    -d "{\"name\":\"$REPO_NAME\", \
    \"private\":\"true\", \
    \"has_issues\":\"true\", \
@@ -60,9 +60,9 @@ fi
 ################################################################################
 # Initalize the repo with basic Files
 ################################################################################
-git clone https://$API_TOKEN@$ORG_NAME/$TEMPLATE_REPO.git
+git clone https://$API_TOKEN@github.com/$ORG_NAME/$TEMPLATE_REPO.git
 
-git clone https://$API_TOKEN@$ORG_NAME/$REPO_NAME.git
+git clone https://$API_TOKEN@github.com/$ORG_NAME/$REPO_NAME.git
 
 rm -rf $TEMPLATE_REPO/.git
 
@@ -89,7 +89,7 @@ rm -rf $TEMPLATE_REPO $REPO_NAME
 echo "------------------------------------------"
 echo "Protecting the master Branch..."
 echo "------------------------------------------"
-curl -H "Authorization: token $API_TOKEN" -H "Accept: application/vnd.github.v3+json" \
+curl -s -H "Authorization: token $API_TOKEN" -H "Accept: application/vnd.github.v3+json" \
   -X PUT "https://api.github.com/repos/$ORG_NAME/$REPO_NAME/branches/master/protection" \
   -d "{\"enforce_admins\": true, \
 	\"required_status_checks\": { \
