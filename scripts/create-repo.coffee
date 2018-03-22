@@ -8,9 +8,9 @@ module.exports = (robot) ->
     args = []
     reponame = msg.match[1].replace /^\s+|\s+$/g, ""
     spaceIndex = reponame.indexOf " "
-    if (spaceIndex != -1) {
+    if spaceIndex != -1
       msg.send "Repository names cannot have spaces"
-    } else {
+    else
       apikey = process.env("GITHUB_API_TOKEN")
 
       args.push(reponame + " " + apikey)
@@ -26,4 +26,3 @@ module.exports = (robot) ->
       cmd.stderr.on 'data', (data) ->
         console.log data.toString().trim()
         msg.send "```\n#{data.toString()}\n```"
-    }
