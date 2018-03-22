@@ -12,6 +12,7 @@
 REPO_NAME=$1            # Name of the GitHub Repository
 API_TOKEN=$2          # GitHub Personal Access Token
 ORG_NAME='Migarjo-Test-Org'   # Name of the master Org
+TEMPLATE_REPO='dow-dmc'
 TEAM_ID='2237075'       # Team ID for Dow
 STATUS_CHECK_NAME='Some Status Check'  # Name of the default status check that should pass
 
@@ -59,6 +60,24 @@ fi
 ################################################################################
 # Initalize the repo with basic Files
 ################################################################################
+git clone https://$API_TOKEN@$ORG_NAME/$TEMPLATE_REPO.git
+
+git clone https://$API_TOKEN@$ORG_NAME/$REPO_NAME.git
+
+rm -rf $TEMPLATE_REPO/.git
+
+cp -R $TEMPLATE_REPO/ $REPO_NAME/
+
+cd $REPO_NAME
+git add .
+git commit -m "Initial commit with documents"
+git push
+
+rm -rf $TEMPLATE_REPO $REPO_NAME
+
+
+
+
 # Here is where we could do some basic git clone, git push, etc...
 # This can all easily be done before we turn on protection
 
