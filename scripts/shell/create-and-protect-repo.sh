@@ -10,7 +10,7 @@
 # Input Variables #
 ###################
 REPO_NAME=$1            # Name of the GitHub Repository
-API_TOKEN=$ENV{'GITHUB_API_TOKEN'}            # GitHub Personal Access Token
+API_TOKEN=$2          # GitHub Personal Access Token
 ORG_NAME='Migarjo-Test-Org'   # Name of the master Org
 TEAM_ID='2237075'       # Team ID for Dow
 STATUS_CHECK_NAME='Some Status Check'  # Name of the default status check that should pass
