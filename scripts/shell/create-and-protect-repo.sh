@@ -23,9 +23,11 @@ STATUS_CHECK_NAME='Some Status Check'  # Name of the default status check that s
 # Test the input for sanity
 ################################################################################
 # Test REPO_NAME
+echo $REPO_NAME
 test -z $REPO_NAME && echo "REPO_NAME Required!" 1>&2 && exit 1
 
 # TEST API_TOKEN
+echo $API_TOKEN
 test -z $API_TOKEN && echo "API_TOKEN Required!" 1>&2 && exit 1
 
 ################################################################################

@@ -13,6 +13,8 @@ module.exports = (robot) ->
     else
       apikey = process.env.GITHUB_API_TOKEN
 
+      console.log "apikey = #{apikey}"
+
       args.push(reponame + " " + apikey)
       # Instantiate child process to be able to create a subprocess
       {spawn} = require 'child_process'
