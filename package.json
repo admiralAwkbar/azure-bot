@@ -6,7 +6,6 @@
   "description": "(Your very own Hubot)",
   "dependencies": {
     "coffee-script": "^1.12.6",
-    "forever": "^0.15.3",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.2",
     "hubot-google-images": "^0.2.7",
