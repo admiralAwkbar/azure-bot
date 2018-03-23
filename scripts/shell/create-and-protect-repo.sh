@@ -72,8 +72,8 @@ echo "------------------------------------------"
 rm -rf $TEMPLATE_REPO $REPO_NAME
 
 # Clone the base and template repo
-git clone https://$API_TOKEN@github.com/$ORG_NAME/$TEMPLATE_REPO.git 2>&1 >> $LOG_FILE
-git clone https://$API_TOKEN@github.com/$ORG_NAME/$REPO_NAME.git 2>&1 >> $LOG_FILE
+git clone --quiet https://$API_TOKEN@github.com/$ORG_NAME/$TEMPLATE_REPO.git 2>&1 >> $LOG_FILE
+git clone --quiet https://$API_TOKEN@github.com/$ORG_NAME/$REPO_NAME.git 2>&1 >> $LOG_FILE
 
 # Remove the .git from template repo so we dont copy that over
 rm -rf $TEMPLATE_REPO/.git
@@ -87,10 +87,10 @@ cd $REPO_NAME
 git add . 2>&1 >> $LOG_FILE
 
 # Config the git user and commit the code to the new repo
-git config user.email \'$BOT_EMAIL\'; git config user.name \'$BOT_NAME\'; git commit -m "Initial commit with documents" 2>&1 >> $LOG_FILE
+git config user.email \'$BOT_EMAIL\'; git config user.name \'$BOT_NAME\'; git commit --quiet -m "Initial commit with documents" 2>&1 >> $LOG_FILE
 
 # Push the code back to GitHub
-git push 2>&1 >> $LOG_FILE
+git push --quiet 2>&1 >> $LOG_FILE
 
 # Remove the repos from the system as housekeeping
 rm -rf $TEMPLATE_REPO $REPO_NAME
