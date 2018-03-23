@@ -82,6 +82,9 @@ rm -rf $TEMPLATE_REPO/.git
 cp -R $TEMPLATE_REPO/* $REPO_NAME/
 cp -R $TEMPLATE_REPO/.[a-zA-Z0-9]* $REPO_NAME/
 
+# Remove the logfile before we commit it
+rm -f $LOG_FILE
+
 # Git add the files
 cd $REPO_NAME
 git add . 2>&1 >> $LOG_FILE
