@@ -11,6 +11,8 @@
 ###################
 REPO_NAME=$1            # Name of the GitHub Repository
 API_TOKEN=$2          # GitHub Personal Access Token
+BOT_NAME=$3
+BOT_EMAIL=$4
 ORG_NAME='Migarjo-Test-Org'   # Name of the master Org
 TEMPLATE_REPO='dow-dmc'
 TEAM_ID='2237075'       # Team ID for Dow
@@ -60,6 +62,9 @@ fi
 ################################################################################
 # Initalize the repo with basic Files
 ################################################################################
+git config user.email $BOT_EMAIL
+git config user.name $BOT_NAME
+
 git clone https://$API_TOKEN@github.com/$ORG_NAME/$TEMPLATE_REPO.git
 
 git clone https://$API_TOKEN@github.com/$ORG_NAME/$REPO_NAME.git

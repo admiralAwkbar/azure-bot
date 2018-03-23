@@ -11,12 +11,11 @@ module.exports = (robot) ->
     if spaceIndex != -1
       msg.send "Repository names cannot have spaces"
     else
-      apikey = process.env.GITHUB_API_TOKEN
-
-      console.log "apikey = #{apikey}"
 
       args.push(reponame)
-      args.push(apikey)
+      args.push(process.env.GITHUB_API_TOKEN)
+      args.push(process.env.BOT_NAME)
+      args.push(process.env.BOT_EMAIL)
       # Instantiate child process to be able to create a subprocess
       {spawn} = require 'child_process'
       # Create new subprocess and have it run the script
