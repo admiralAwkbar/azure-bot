@@ -41,10 +41,16 @@ Connect to your Azure web portal and authenticate. You will then need to complet
 - Go to your newly created application on the dashboard
 - Configure environment variables that your Hubot will need to use
   - Select `application settings`
+  - Navigate to `General Settings`
+    - Select Always On
   - Navigate to the `Application Settings` section
   - Select `Add new setting` to create key pairs:
     - HUBOT_SLACK_TOKEN=Your Created Slack Token
     - HUBOT_ADAPTER=slack
+    - BOT_NAME=YourHubotName
+    - BOT_EMAIL=YourHubot@email.com
+    - HUBOT_LOG_LEVEL=debug
+    - GITHUB_API_TOKEN=YourPACFromGitHub
     - Select `Save` from top banner
   - *NOTE:* If you are using a different chat tool, you will need to configure different environment variables
 - Set up automatic deployment of this app from your GitHub repository
