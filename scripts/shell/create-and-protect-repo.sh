@@ -16,7 +16,7 @@ BOT_EMAIL=$4   # Email for the Hubot pulled from Env
 ORG_NAME='Migarjo-Test-Org'   # Name of the master Org
 TEMPLATE_REPO='dow-dmc'       # Teplate repo to clone
 TEAM_ID='2237075'             # Team ID for Dow
-LOG_FILE='clone.log'          # File to push output
+LOG_FILE='/dev/null 2>&1'          # File to push output
 STATUS_CHECK_NAME='Some Status Check'  # Name of the default status check that should pass
 
 ##############
@@ -48,7 +48,7 @@ curl -s -H "Authorization: token $API_TOKEN" -H "Accept: application/vnd.github.
    \"has_projects\":\"true\", \
    \"has_wiki\":\"true\", \
    \"team_id\":\"$TEAM_ID\", \
-   \"auto_init\":\"true\"}" >> $LOG_FILE
+   \"auto_init\":\"true\"}" > $LOG_FILE
 
 ############################################
 # Check that the shell returned successful #
@@ -72,8 +72,8 @@ echo "------------------------------------------"
 rm -rf $TEMPLATE_REPO $REPO_NAME
 
 # Clone the base and template repo
-git clone https://$API_TOKEN@github.com/$ORG_NAME/$TEMPLATE_REPO.git >> $LOG_FILE
-git clone https://$API_TOKEN@github.com/$ORG_NAME/$REPO_NAME.git >> $LOG_FILE
+git clone https://$API_TOKEN@github.com/$ORG_NAME/$TEMPLATE_REPO.git > $LOG_FILE
+git clone https://$API_TOKEN@github.com/$ORG_NAME/$REPO_NAME.git > $LOG_FILE
 
 # Remove the .git from template repo so we dont copy that over
 rm -rf $TEMPLATE_REPO/.git
@@ -84,13 +84,13 @@ cp -R $TEMPLATE_REPO/.[a-zA-Z0-9]* $REPO_NAME/
 
 # Git add the files
 cd $REPO_NAME
-git add .
+git add . > $LOG_FILE
 
 # Config the git user and commit the code to the new repo
-git config user.email \'$BOT_EMAIL\'; git config user.name \'$BOT_NAME\'; git commit -m "Initial commit with documents"
+git config user.email \'$BOT_EMAIL\'; git config user.name \'$BOT_NAME\'; git commit -m "Initial commit with documents" > $LOG_FILE
 
 # Push the code back to GitHub
-git push
+git push > $LOG_FILE
 
 # Remove the repos from the system as housekeeping
 rm -rf $TEMPLATE_REPO $REPO_NAME
@@ -112,7 +112,7 @@ curl -s -H "Authorization: token $API_TOKEN" -H "Accept: application/vnd.github.
 	\"required_pull_request_reviews\": { \
 		\"dismiss_stale_reviews\": true , \
       \"require_code_owner_reviews\": true },\
-	\"restrictions\": null }" >> $LOG_FILE
+	\"restrictions\": null }" > $LOG_FILE
 
 ############################################
 # Check that the shell returned successful #
