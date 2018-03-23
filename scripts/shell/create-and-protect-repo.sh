@@ -62,8 +62,8 @@ fi
 ################################################################################
 # Initalize the repo with basic Files
 ################################################################################
-git config --global user.email \'$BOT_EMAIL\'
-git config --global user.name \'$BOT_NAME\'
+git config user.email \'$BOT_EMAIL\'
+git config user.name \'$BOT_NAME\'
 
 rm -rf $TEMPLATE_REPO $REPO_NAME
 
