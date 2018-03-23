@@ -69,7 +69,7 @@ git clone https://$API_TOKEN@github.com/$ORG_NAME/$TEMPLATE_REPO.git
 git clone https://$API_TOKEN@github.com/$ORG_NAME/$REPO_NAME.git
 
 rm -rf $TEMPLATE_REPO/.git
-cp -R $TEMPLATE_REPO/* $REPO_NAME/
+rsync -rtv $TEMPLATE_REPO/ $REPO_NAME/
 
 cd $REPO_NAME
 git add .
