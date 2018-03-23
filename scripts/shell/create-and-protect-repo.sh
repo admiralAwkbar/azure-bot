@@ -62,8 +62,10 @@ fi
 ################################################################################
 # Initalize the repo with basic Files
 ################################################################################
-git config user.email $BOT_EMAIL
-git config user.name $BOT_NAME
+git config --global user.email $BOT_EMAIL
+git config --global user.name $BOT_NAME
+
+rm -rf $TEMPLATE_REPO $REPO_NAME
 
 git clone https://$API_TOKEN@github.com/$ORG_NAME/$TEMPLATE_REPO.git
 
