@@ -63,6 +63,7 @@ Connect to your Azure web portal and authenticate. You will then need to complet
 
 
 ### Deployment
+The first time you deploy this you may need to select the `sync button` of `Deployment Options` to start the application the first time.  
 Any time the master branch of your Azure Hubot repository is updated, it will trigger the Azure Deployment and update the Hubot. The Hubot only takes around 30 seconds to be re-deployed.   
 *NOTE:* The first deployment will take longer as it will need to pull in many of the base dependencies.
 
