@@ -58,13 +58,20 @@ Connect to your Azure web portal and authenticate. You will then need to complet
 
 ### Deployment
 Any time the master branch of your Azure Hubot repository is updated, it will trigger the Azure Deployment and update the Hubot. The Hubot only takes around 30 seconds to be re-deployed.   
-*NOTE:* The first deployment will take longer as it will need to pull in many of the base dependencies.  
+*NOTE:* The first deployment will take longer as it will need to pull in many of the base dependencies.
 
 -------------------------------------
 
-# Hubot / MS-Teams Bot integrations
+## Adding scripts to this Bot
+Hubot is a node app running coffeescript modules that can be written within the `scripts` folder. One common pattern is to use a coffeescript wrapper that calls scripts in other languages so you can write Hubot in any scripting language you're comfortable with.
 
-## Connect to VSTS
+This implementation includes an example of this at `scripts/create-repo.coffee`. This module interprets the input given by the user and calls a bash script at `scripts/shell/create-and-protect-repo.sh` to create a github repository. These example files include documentation to implement this for other uses.
+
+-------------------------------------
+
+## Hubot / MS-Teams Bot integrations
+
+### Connect to VSTS
 You will want to connect the bot from your Chat tooling into VSTS.  
 This integration should be able to complete at the minimum the following actions:
 - Show queue
@@ -73,7 +80,7 @@ This integration should be able to complete at the minimum the following actions
 
 Other actions are greatly encouraged, and can be seen as enhancements.
 
-## Connect to GitHub
+### Connect to GitHub
 You will want to connect the bot from your Chat tooling into GitHub.  
 This integration should be able to complete at the minimum the following actions:
 - List Repositories
@@ -82,18 +89,18 @@ This integration should be able to complete at the minimum the following actions
 
 Other actions are greatly encouraged, and can be seen as enhancements.
 
-## Monitoring
+### Monitoring
 Having your bot be able to connect to your monitoring environment is a great step in maturity.  
 The ability to query information or metrics gives you a quick insight to your environment from your chat environment.  
-This allows teams to collaborate in real time about the environment and have a record of what is happening.   
+This allows teams to collaborate in real time about the environment and have a record of what is happening.
 Commands that allow you to fetch metrics and graphs, as well as check endpoints can greatly increase your culture and promote your environments.  
 
 
-## Sparkles
+### Sparkles
 [Sparkles](https://github.com/pmn/sparkles/blob/master/scripts/sparkles.coffee)
 Giving your teammates points for doing something special is a great way to build culture and promote sharing.  
 This can be added and enhance your culture.  
 
-## Remember
+### Remember
 This is a fairly common script that allows your bot to remember basic strings.  
 This is useful to remember common end points, or other common data that needs to be stored in chat.
